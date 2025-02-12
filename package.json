@@ -4,9 +4,9 @@
 	"scripts": {
 		"build": "turbo build",
 		"dev": "turbo dev",
-		"lint": "turbo lint",
+		"check": "turbo check",
 		"prepare": "husky",
-		"publish-packages": "turbo run build lint && changeset version && changeset publish"
+		"publish-packages": "turbo run build check && changeset publish"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",

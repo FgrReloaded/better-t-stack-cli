@@ -6,6 +6,7 @@
 		"build": "next build",
 		"dev": "next dev",
 		"start": "next start",
+		"check": "biome check --write .",
 		"postinstall": "fumadocs-mdx"
 	},
 	"dependencies": {
