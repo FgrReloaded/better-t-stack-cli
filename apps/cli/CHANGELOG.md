@@ -1,5 +1,11 @@
 # create-better-t-stack
 
+## 0.2.0
+
+### Minor Changes
+
+- b56096f: feat(cli): add reproducible command output and flag support
+
 ## 0.1.3
 
 ### Patch Changes
