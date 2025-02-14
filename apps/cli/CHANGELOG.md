@@ -1,5 +1,11 @@
 # create-better-t-stack
 
+## 0.7.0
+
+### Minor Changes
+
+- f98216e: replace chalk with picocolors
+
 ## 0.6.2
 
 ### Patch Changes
