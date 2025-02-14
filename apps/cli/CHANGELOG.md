@@ -1,5 +1,11 @@
 # create-better-t-stack
 
+## 0.7.1
+
+### Patch Changes
+
+- be5c662: update readme
+
 ## 0.7.0
 
 ### Minor Changes
