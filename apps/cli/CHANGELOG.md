@@ -1,5 +1,11 @@
 # create-better-t-stack
 
+## 0.6.2
+
+### Patch Changes
+
+- e9ecdbf: update template repo url and add degit
+
 ## 0.6.1
 
 ### Patch Changes
