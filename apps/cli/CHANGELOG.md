@@ -1,5 +1,11 @@
 # create-better-t-stack
 
+## 0.7.4
+
+### Patch Changes
+
+- d30adfd: remove ugly emojis
+
 ## 0.7.3
 
 ### Patch Changes
