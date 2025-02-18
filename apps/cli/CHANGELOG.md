@@ -1,5 +1,11 @@
 # create-better-t-stack
 
+## 0.7.5
+
+### Patch Changes
+
+- 64fc644: refactor(cli): simplify database selection flags
+
 ## 0.7.4
 
 ### Patch Changes
