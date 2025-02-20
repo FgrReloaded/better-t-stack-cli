@@ -1,5 +1,11 @@
 # create-better-t-stack
 
+## 0.8.0
+
+### Minor Changes
+
+- 3d78d1e: add flags and prompt for orm, add none option in database
+
 ## 0.7.5
 
 ### Patch Changes
