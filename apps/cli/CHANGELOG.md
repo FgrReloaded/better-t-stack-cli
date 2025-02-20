@@ -1,5 +1,11 @@
 # create-better-t-stack
 
+## 0.8.1
+
+### Patch Changes
+
+- ba77104: update ascii art
+
 ## 0.8.0
 
 ### Minor Changes
