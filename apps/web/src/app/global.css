@@ -4,6 +4,36 @@
 
 @source '../../../../node_modules/fumadocs-ui/dist/**/*.js';
 
+/* Define magenta color palette using the new @theme directive */
+@theme {
+	--color-magenta-50: #fdf4ff;
+	--color-magenta-100: #fae8ff;
+	--color-magenta-200: #f5d0fe;
+	--color-magenta-300: #f0abfc;
+	--color-magenta-400: #e879f9;
+	--color-magenta-500: #d946ef;
+	--color-magenta-600: #c026d3;
+	--color-magenta-700: #a21caf;
+	--color-magenta-800: #86198f;
+	--color-magenta-900: #701a75;
+	--color-magenta-950: #4a044e;
+}
+
+/* Define blue color palette using the @theme directive */
+@theme {
+	--color-blue-50: #eff6ff;
+	--color-blue-100: #dbeafe;
+	--color-blue-200: #bfdbfe;
+	--color-blue-300: #93c5fd;
+	--color-blue-400: #60a5fa;
+	--color-blue-500: #3b82f6;
+	--color-blue-600: #2563eb;
+	--color-blue-700: #1d4ed8;
+	--color-blue-800: #1e40af;
+	--color-blue-900: #1e3a8a;
+	--color-blue-950: #172554;
+}
+
 .bg-noise {
 	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E");
 }
@@ -72,17 +102,55 @@
 }
 
 ::-webkit-scrollbar-track {
-	background: rgba(16, 0, 16, 0.493);
+	background: rgba(1, 10, 24, 0.5);
 	border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-	background: linear-gradient(45deg, #666, #888);
+	background: linear-gradient(
+		45deg,
+		var(--color-blue-600),
+		var(--color-blue-800)
+	);
 	border-radius: 4px;
 	border: 2px solid #1a1a1a;
 	transition: background 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background: linear-gradient(45deg, #888, #aaa);
+	background: linear-gradient(
+		45deg,
+		var(--color-blue-500),
+		var(--color-blue-700)
+	);
+}
+
+@keyframes twinkle {
+	0%,
+	100% {
+		opacity: 0.1;
+	}
+	50% {
+		opacity: 0.7;
+	}
+}
+
+@keyframes pulse-slow {
+	0%,
+	100% {
+		transform: scale(1);
+		box-shadow: 0 0 15px rgba(37, 99, 235, 0.4);
+	}
+	50% {
+		transform: scale(1.05);
+		box-shadow: 0 0 30px rgba(37, 99, 235, 0.6);
+	}
+}
+
+.animate-twinkle {
+	animation: twinkle 5s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+	animation: pulse-slow 4s ease-in-out infinite;
 }

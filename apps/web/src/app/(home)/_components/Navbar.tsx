@@ -44,25 +44,31 @@ const Navbar = () => {
 			className={`fixed top-0 right-0 z-[100] w-screen px-8 py-5 flex items-center sm:justify-between justify-center transition-all duration-300 ${
 				scrolled
 					? "bg-transparent border-transparent"
-					: "sm:bg-black/10 sm:backdrop-blur-xl sm:border-b border-white/10"
+					: "sm:bg-black/40 sm:backdrop-blur-xl sm:border-b border-blue-500/20"
 			}`}
 		>
 			<div
-				className={`max-md:hidden flex items-center space-x-2 transition-opacity duration-300 ${scrolled ? "opacity-0" : "opacity-100"}`}
+				className={`max-md:hidden flex items-center space-x-2 transition-opacity duration-300 ${
+					scrolled ? "opacity-0" : "opacity-100"
+				}`}
 			>
-				<div className="bg-gradient-to-br from-purple-500 via-pink-400 to-yellow-200 w-8 h-8 rounded-lg flex items-center justify-center">
-					<div className="bg-white w-4 h-4 rounded-sm" />
+				<div className="bg-gradient-to-br from-blue-500 via-blue-400 to-indigo-300 w-8 h-8 rounded-lg flex items-center justify-center">
+					<div className="bg-black w-4 h-4 rounded-sm flex items-center justify-center">
+						<span className="text-blue-500 text-xs font-mono">$_</span>
+					</div>
 				</div>
-				<span className="text-white font-semibold text-lg">Better T Stack</span>
+				<span className="text-blue-400 font-mono font-semibold text-lg">
+					Better-T Stack
+				</span>
 			</div>
 
 			<div
-				className={`flex items-center backdrop-blur-md bg-white/5 rounded-full border border-white/10 py-1 px-1.5 text-sm relative transition-all duration-500 ease-out ${
+				className={`flex items-center backdrop-blur-md bg-black/40 rounded-md border border-blue-500/30 py-1 px-1.5 text-sm relative transition-all duration-500 ease-out ${
 					scrolled ? "w-[420px]" : "sm:w-[280px] w-[350px]"
 				}`}
 			>
 				<div
-					className="absolute transition-all duration-300 ease-in-out bg-white/5 border border-white/10 rounded-full py-2"
+					className="absolute transition-all duration-300 ease-in-out bg-blue-900/20 border border-blue-500/20 rounded-md py-2"
 					style={bgStyles}
 				/>
 				<Link
@@ -71,9 +77,9 @@ const Navbar = () => {
 						linkRefs.current.home = ref;
 					}}
 					onMouseOver={() => setActiveLink("home")}
-					className="text-gray-300 hover:text-white transition-colors py-2 px-4 rounded-full relative"
+					className="text-gray-300 hover:text-blue-300 transition-colors py-2 px-4 rounded-md relative font-mono"
 				>
-					Home
+					<span className="text-blue-500">~/</span>home
 				</Link>
 				<Link
 					href="https://www.github.com/better-t-stack/create-better-t-stack"
@@ -83,10 +89,10 @@ const Navbar = () => {
 					}}
 					onMouseOver={() => setActiveLink("github")}
 					onMouseLeave={() => setActiveLink("home")}
-					className="text-gray-300 hover:text-white transition-colors py-2 px-4 rounded-full relative flex gap-2 items-center"
+					className="text-gray-300 hover:text-blue-300 transition-colors py-2 px-4 rounded-md relative flex gap-2 items-center font-mono"
 				>
 					<PackageIcon pm="github" className="w-4 h-4" />{" "}
-					<span className="max-sm:hidden">Github</span>
+					<span className="max-sm:hidden">github</span>
 				</Link>
 				<Link
 					href="https://www.npmjs.com/package/create-better-t-stack"
@@ -96,13 +102,13 @@ const Navbar = () => {
 					}}
 					onMouseOver={() => setActiveLink("npm")}
 					onMouseLeave={() => setActiveLink("home")}
-					className="text-gray-300 hover:text-white transition-colors py-2 px-4 rounded-full relative flex gap-2 items-center"
+					className="text-gray-300 hover:text-blue-300 transition-colors py-2 px-4 rounded-md relative flex gap-2 items-center font-mono"
 				>
 					<PackageIcon pm="npm" className="w-4 h-4 rounded-full" />{" "}
-					<span className="max-sm:hidden">Npm</span>
+					<span className="max-sm:hidden">npm</span>
 				</Link>
 				<span
-					className="text-gray-500 transition-all duration-300"
+					className="text-blue-500 transition-all duration-300"
 					style={{
 						opacity: scrolled ? 1 : 0,
 						transform: scrolled ? "translateY(0)" : "translateY(-8px)",
@@ -120,13 +126,13 @@ const Navbar = () => {
 					style={{
 						transform: scrolled ? "translateY(0)" : "sm:translateY(-8px)",
 					}}
-					className={` hover:text-white transition-all duration-300 py-2 px-4 rounded-full ${
+					className={`hover:text-blue-300 transition-all duration-300 py-2 px-4 rounded-md font-mono ${
 						scrolled
 							? "sm:opacity-100 sm:translate-y-0"
 							: "sm:opacity-0 sm:pointer-events-none"
 					}`}
 				>
-					Documentation
+					documentation
 				</Link>
 			</div>
 
@@ -137,11 +143,11 @@ const Navbar = () => {
 			>
 				<Link
 					href="/docs"
-					className="relative max-sm:hidden inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+					className="relative max-sm:hidden inline-flex h-12 overflow-hidden rounded-md p-[1px] focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-black"
 				>
-					<span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
-					<span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-6 py-px text-sm font-medium text-white backdrop-blur-3xl">
-						Documentation
+					<span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#3b82f6_0%,#6366f1_50%,#3b82f6_100%)]" />
+					<span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-md bg-black px-6 py-px text-sm font-medium text-blue-400 backdrop-blur-3xl font-mono">
+						<span className="text-blue-500 mr-1">$</span> ./docs
 					</span>
 				</Link>
 			</div>

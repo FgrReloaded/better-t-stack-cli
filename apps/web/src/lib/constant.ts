@@ -109,7 +109,7 @@ export const initialNodes: TechNode[] = [
 	{
 		id: "bun",
 		type: "techNode",
-		position: { x: 536, y: 204 },
+		position: { x: 500, y: 150 },
 		data: {
 			label: "Bun",
 			category: "core",
@@ -121,7 +121,7 @@ export const initialNodes: TechNode[] = [
 	{
 		id: "tanstack",
 		type: "techNode",
-		position: { x: 362, y: 296 },
+		position: { x: 320, y: 250 },
 		data: {
 			label: "TanStack Router",
 			category: "frontend",
@@ -134,7 +134,7 @@ export const initialNodes: TechNode[] = [
 	{
 		id: "tailwind",
 		type: "techNode",
-		position: { x: 494, y: 379 },
+		position: { x: 270, y: 380 },
 		data: {
 			label: "Tailwind CSS",
 			category: "frontend",
@@ -147,7 +147,7 @@ export const initialNodes: TechNode[] = [
 	{
 		id: "shadcn",
 		type: "techNode",
-		position: { x: 358, y: 486 },
+		position: { x: 350, y: 500 },
 		data: {
 			label: "shadcn/ui",
 			category: "frontend",
@@ -160,7 +160,7 @@ export const initialNodes: TechNode[] = [
 	{
 		id: "hono",
 		type: "techNode",
-		position: { x: 700, y: 325 },
+		position: { x: 680, y: 280 },
 		data: {
 			label: "Hono",
 			category: "backend",
@@ -173,7 +173,7 @@ export const initialNodes: TechNode[] = [
 	{
 		id: "sqlite",
 		type: "techNode",
-		position: { x: 544, y: 532 },
+		position: { x: 580, y: 550 },
 		data: {
 			label: "Sqlite",
 			category: "database",
@@ -186,7 +186,7 @@ export const initialNodes: TechNode[] = [
 	{
 		id: "postgres",
 		type: "techNode",
-		position: { x: 318, y: 579 },
+		position: { x: 230, y: 580 },
 		data: {
 			label: "PostgreSQL",
 			category: "database",
@@ -199,7 +199,7 @@ export const initialNodes: TechNode[] = [
 	{
 		id: "drizzle",
 		type: "techNode",
-		position: { x: 559, y: 651 },
+		position: { x: 650, y: 480 },
 		data: {
 			label: "Drizzle",
 			category: "orm",
@@ -212,7 +212,7 @@ export const initialNodes: TechNode[] = [
 	{
 		id: "prisma",
 		type: "techNode",
-		position: { x: 707, y: 675 },
+		position: { x: 730, y: 580 },
 		data: {
 			label: "Prisma",
 			category: "orm",
@@ -225,7 +225,7 @@ export const initialNodes: TechNode[] = [
 	{
 		id: "better-auth",
 		type: "techNode",
-		position: { x: 770, y: 502 },
+		position: { x: 750, y: 400 },
 		data: {
 			label: "Better-Auth",
 			category: "auth",
@@ -238,7 +238,7 @@ export const initialNodes: TechNode[] = [
 	{
 		id: "no-auth",
 		type: "techNode",
-		position: { x: 950, y: 621 },
+		position: { x: 850, y: 520 },
 		data: {
 			label: "No Auth",
 			category: "auth",

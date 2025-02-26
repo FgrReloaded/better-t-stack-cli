@@ -34,7 +34,9 @@ const AnimatedBeam = ({
 			const toY = toRect.top - containerRect.top + toRect.height / 2;
 
 			setPath(
-				`M ${fromX},${fromY} Q ${(fromX + toX) / 2},${(fromY + toY) / 2 - curveDirection} ${toX},${toY}`,
+				`M ${fromX},${fromY} Q ${(fromX + toX) / 2},${
+					(fromY + toY) / 2 - curveDirection
+				} ${toX},${toY}`,
 			);
 		};
 
@@ -49,9 +51,10 @@ const AnimatedBeam = ({
 			<path
 				d={path}
 				fill="none"
-				stroke="url(#gradient)"
+				stroke="url(#blueGradient)"
 				strokeWidth="2"
-				className="opacity-30"
+				className="opacity-40"
+				filter="url(#glow)"
 			>
 				<animate
 					attributeName="stroke-dasharray"
@@ -62,11 +65,18 @@ const AnimatedBeam = ({
 				/>
 			</path>
 			<defs>
-				<linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-					<stop offset="0%" stopColor="#3B82F6" stopOpacity="0" />
-					<stop offset="50%" stopColor="#3B82F6" />
-					<stop offset="100%" stopColor="#3B82F6" stopOpacity="0" />
+				<linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+					<stop offset="0%" stopColor="rgba(37, 99, 235, 0)" />
+					<stop offset="50%" stopColor="rgba(59, 130, 246, 1)" />
+					<stop offset="100%" stopColor="rgba(37, 99, 235, 0)" />
 				</linearGradient>
+				<filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+					<feGaussianBlur stdDeviation="2.5" result="blur" />
+					<feMerge>
+						<feMergeNode in="blur" />
+						<feMergeNode in="SourceGraphic" />
+					</feMerge>
+				</filter>
 			</defs>
 		</svg>
 	);
@@ -82,14 +92,16 @@ const TechConstellation = () => {
 			left: string;
 			top: string;
 			delay: string;
+			size: string;
 		}>
 	>([]);
 
 	useEffect(() => {
-		const newStars = Array.from({ length: 20 }, () => ({
+		const newStars = Array.from({ length: 60 }, () => ({
 			left: `${Math.random() * 100}%`,
 			top: `${Math.random() * 100}%`,
 			delay: `${Math.random() * 5}s`,
+			size: `${Math.random() * 3 + 1}px`,
 		}));
 		setStars(newStars);
 	}, []);
@@ -97,12 +109,13 @@ const TechConstellation = () => {
 	const calculateRadius = (category: string) => {
 		switch (category) {
 			case "core":
-				return 160;
+				return 200; // Increased for better spacing
 			case "frontend":
+				return 300; // Increased for better spacing
 			case "backend":
-				return 240;
+				return 320; // Increased and differentiated from frontend
 			default:
-				return 200;
+				return 250;
 		}
 	};
 
@@ -166,22 +179,46 @@ const TechConstellation = () => {
 		setIsVisible(true);
 	}, []);
 
+	// Function to determine label position based on angle
+	const getLabelPosition = (angle: number) => {
+		// Top half of the circle
+		if (angle >= -90 && angle <= 90) {
+			return "-top-[70px]";
+		}
+		// Bottom half of the circle
+		return "top-[60px]";
+	};
+
 	return (
 		<div
 			ref={containerRef}
-			className="relative z-50 w-full h-[90vh] bg-gradient-to-b from-transparent mt-8 via-gray-950 to-transparent overflow-auto flex items-center justify-center "
+			className="relative z-50 w-full h-[90vh] bg-gradient-to-b from-transparent mt-8 via-gray-950 to-transparent overflow-auto flex items-center justify-center"
 		>
+			{/* Center Node */}
 			<div
 				ref={centerRef}
-				className={`absolute z-10 w-24 h-24 bg-blue-600 rounded-full flex items-center justify-center transform transition-all duration-1000 ${isVisible ? "scale-100 opacity-100" : "scale-0 opacity-0"}`}
+				className={`absolute z-10 w-28 h-28 bg-gradient-to-br from-blue-600 to-blue-800
+                     rounded-full flex items-center justify-center transform transition-all duration-1000
+                     border-2 border-blue-400 shadow-[0_0_20px_5px_rgba(37,99,235,0.5)]
+                     animate-pulse-slow
+                     ${
+												isVisible
+													? "scale-100 opacity-100"
+													: "scale-0 opacity-0"
+											}`}
 			>
-				<span className="text-3xl font-bold text-white">TS</span>
+				<div className="absolute inset-3 bg-noise opacity-10 rounded-full" />
+				<span className="text-3xl font-bold text-white z-10 shiny-text">
+					TS
+				</span>
 			</div>
 
+			{/* Technology Nodes */}
 			{technologies.map((tech, index) => {
 				const radius = calculateRadius(tech.category);
 				const x = Math.cos((tech.angle * Math.PI) / 180) * radius;
 				const y = Math.sin((tech.angle * Math.PI) / 180) * radius;
+				const defaultLabelPos = getLabelPosition(tech.angle);
 
 				return (
 					<div
@@ -190,7 +227,11 @@ const TechConstellation = () => {
 							techRefs.current[tech.name] = el;
 						}}
 						className={`absolute z-20 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-1000
-																							${isVisible ? "scale-100 opacity-100" : "scale-0 opacity-0"}`}
+                          ${
+														isVisible
+															? "scale-100 opacity-100"
+															: "scale-0 opacity-0"
+													}`}
 						style={{
 							left: `calc(50% + ${x}px)`,
 							top: `calc(50% + ${y}px)`,
@@ -198,20 +239,33 @@ const TechConstellation = () => {
 						}}
 					>
 						<div
-							className={`w-12 h-12 ${tech.color} rounded-full flex items-center justify-center
-																											transform hover:scale-125 transition-all duration-300 cursor-pointer
-																											shadow-lg hover:shadow-xl hover:rotate-12`}
+							className={`w-16 h-16 ${tech.color} rounded-full flex items-center justify-center
+                              transform hover:scale-125 transition-all duration-300 cursor-pointer
+                              shadow-[0_0_10px_rgba(37,99,235,0.4)] hover:shadow-[0_0_20px_rgba(59,130,246,0.7)]
+                              hover:rotate-12 border border-opacity-30 border-white`}
 						>
-							<tech.icon className={`w-6 h-6 ${tech.textColor}`} />
+							<tech.icon className={`w-8 h-8 ${tech.textColor}`} />
 						</div>
 
 						<div
-							className={`opacity-100 absolute ${tech.top ? tech.top : "-top-[48px]"} ${tech.left ? tech.left : "left-1/2"} transform -translate-x-1/2
-																										bg-gray-900 text-white px-3 py-1.5 rounded-lg shadow-xl transition-all duration-300
-																										whitespace-nowrap text-xs hover:scale-105`}
+							className={`absolute ${tech.top || defaultLabelPos} ${
+								tech.left || "left-1/2"
+							}
+                              transform -translate-x-1/2 bg-gradient-to-br from-gray-900/90 to-gray-950/90
+                              text-white px-4 py-2.5 rounded-lg transition-all duration-300
+                              whitespace-nowrap text-xs hover:scale-105 backdrop-blur-sm
+                              border border-blue-800/30 shadow-[0_0_10px_rgba(0,0,0,0.4)]
+                              group min-w-[160px] text-center z-30`}
 						>
-							<strong>{tech.name}</strong>
-							<p className="text-gray-300 text-[10px]">{tech.description}</p>
+							<div className="absolute inset-0 bg-noise opacity-10 rounded-lg" />
+							<strong className="text-sm text-blue-200 block">
+								{tech.name}
+							</strong>
+							<p className="text-gray-300 mt-1">{tech.description}</p>
+							<div
+								className="absolute h-0.5 w-0 bg-gradient-to-r from-blue-500/0 via-blue-500 to-blue-500/0
+                                bottom-0 left-0 group-hover:w-full transition-all duration-500 border-beam"
+							/>
 						</div>
 					</div>
 				);
@@ -225,14 +279,17 @@ const TechConstellation = () => {
 				</>
 			)}
 
+			{/* Starry Background */}
 			<div className="absolute inset-0 overflow-hidden">
 				{stars.map((star) => (
 					<div
-						key={star.top}
-						className="absolute w-2 h-2 bg-blue-500 rounded-full opacity-20"
+						key={star.size}
+						className="absolute rounded-full animate-twinkle"
 						style={{
 							left: star.left,
 							top: star.top,
+							width: star.size,
+							height: star.size,
 							animationDelay: star.delay,
 						}}
 					/>
