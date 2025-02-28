@@ -1,6 +1,6 @@
 {
 	"name": "create-better-t-stack",
-	"version": "0.8.1",
+	"version": "0.9.0",
 	"description": "CLI tool to scaffold Better-T Stack projects",
 	"type": "module",
 	"license": "MIT",

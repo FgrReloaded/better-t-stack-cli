@@ -1,5 +1,11 @@
 # create-better-t-stack
 
+## 0.9.0
+
+### Minor Changes
+
+- 6600d1f: implement auth add or remove logic
+
 ## 0.8.1
 
 ### Patch Changes
