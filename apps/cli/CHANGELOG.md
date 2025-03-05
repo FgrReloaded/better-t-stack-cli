@@ -1,5 +1,11 @@
 # create-better-t-stack
 
+## 0.10.0
+
+### Minor Changes
+
+- 792885b: add auth, drizzle, prisma setup logic
+
 ## 0.9.0
 
 ### Minor Changes
