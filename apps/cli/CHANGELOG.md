@@ -1,5 +1,11 @@
 # create-better-t-stack
 
+## 0.10.2
+
+### Patch Changes
+
+- 76ea670: fix template typo
+
 ## 0.10.1
 
 ### Patch Changes
