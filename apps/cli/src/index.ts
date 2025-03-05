@@ -19,39 +19,40 @@ process.on("SIGINT", () => {
 const program = new Command();
 
 async function main() {
+	program
+		.name("create-better-t-stack")
+		.description("Create a new Better-T Stack project")
+		.version(getVersion())
+		.argument("[project-directory]", "Project name/directory")
+		.option("-y, --yes", "Use default configuration")
+		.option("--no-database", "Skip database setup")
+		.option("--sqlite", "Use SQLite database")
+		.option("--postgres", "Use PostgreSQL database")
+		.option("--auth", "Include authentication")
+		.option("--no-auth", "Exclude authentication")
+		.option("--docker", "Include Docker setup")
+		.option("--github-actions", "Include GitHub Actions")
+		.option("--seo", "Include SEO setup")
+		.option("--no-features", "Skip all additional features")
+		.option("--git", "Include git setup")
+		.option("--no-git", "Skip git initialization")
+		.option("--npm", "Use npm package manager")
+		.option("--pnpm", "Use pnpm package manager")
+		.option("--yarn", "Use yarn package manager")
+		.option("--bun", "Use bun package manager")
+		.option("--drizzle", "Use Drizzle ORM")
+		.option("--prisma", "Use Prisma ORM (coming soon)")
+		.option("--install", "Install dependencies")
+		.option("--no-install", "Skip installing dependencies")
+		.option("--turso", "Set up Turso for SQLite database")
+		.option("--no-turso", "Skip Turso setup for SQLite database")
+		.parse();
+
 	const s = spinner();
+
 	try {
 		renderTitle();
 		intro(pc.magenta("Creating a new Better-T-Stack project"));
-
-		program
-			.name("create-better-t-stack")
-			.description("Create a new Better-T Stack project")
-			.version(getVersion())
-			.argument("[project-directory]", "Project name/directory")
-			.option("-y, --yes", "Use default configuration")
-			.option("--no-database", "Skip database setup")
-			.option("--sqlite", "Use SQLite database")
-			.option("--postgres", "Use PostgreSQL database")
-			.option("--auth", "Include authentication")
-			.option("--no-auth", "Exclude authentication")
-			.option("--docker", "Include Docker setup")
-			.option("--github-actions", "Include GitHub Actions")
-			.option("--seo", "Include SEO setup")
-			.option("--no-features", "Skip all additional features")
-			.option("--git", "Include git setup")
-			.option("--no-git", "Skip git initialization")
-			.option("--npm", "Use npm package manager")
-			.option("--pnpm", "Use pnpm package manager")
-			.option("--yarn", "Use yarn package manager")
-			.option("--bun", "Use bun package manager")
-			.option("--drizzle", "Use Drizzle ORM")
-			.option("--prisma", "Use Prisma ORM (coming soon)")
-			.option("--install", "Install dependencies")
-			.option("--no-install", "Skip installing dependencies")
-			.option("--turso", "Set up Turso for SQLite database")
-			.option("--no-turso", "Skip Turso setup for SQLite database")
-			.parse();
 
 		const options = program.opts();
 		const projectDirectory = program.args[0];
