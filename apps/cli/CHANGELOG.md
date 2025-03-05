@@ -1,5 +1,11 @@
 # create-better-t-stack
 
+## 0.11.0
+
+### Minor Changes
+
+- e67a277: fix commander initialization
+
 ## 0.10.0
 
 ### Minor Changes
