@@ -1,5 +1,11 @@
 # create-better-t-stack
 
+## 0.10.1
+
+### Patch Changes
+
+- 48efa59: fix commander init
+
 ## 0.10.0
 
 ### Minor Changes
