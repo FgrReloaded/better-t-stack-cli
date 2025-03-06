@@ -1,5 +1,11 @@
 # create-better-t-stack
 
+## 0.10.3
+
+### Patch Changes
+
+- 5b13b04: rename features to addons
+
 ## 0.10.2
 
 ### Patch Changes
