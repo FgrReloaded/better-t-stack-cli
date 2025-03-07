@@ -1,5 +1,11 @@
 # create-better-t-stack
 
+## 0.10.4
+
+### Patch Changes
+
+- 03571ca: allow specifying project path in prompt
+
 ## 0.10.3
 
 ### Patch Changes
