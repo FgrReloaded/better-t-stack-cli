@@ -1,5 +1,11 @@
 # create-better-t-stack
 
+## 0.11.0
+
+### Minor Changes
+
+- f02ffd7: added github seo add-on
+
 ## 0.10.4
 
 ### Patch Changes
